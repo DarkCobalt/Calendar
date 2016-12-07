@@ -64,7 +64,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Europe/London', // UTC±00:00 Allow simple add time to user timezone
 
     /*
     |--------------------------------------------------------------------------
