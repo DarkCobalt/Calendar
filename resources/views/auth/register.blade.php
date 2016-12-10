@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.auth')
 
 @section('content')
 <div class="container">
@@ -57,6 +57,17 @@
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password" class="col-md-4 control-label">Timezone</label>
+                            <div class="col-md-6">
+                                <select class="form-control">
+                                    @foreach(config('def.timezone') as $key=>$timezone)
+                                        <option value="{{ $key }}">{{ $timezone['label'] }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 
