@@ -1,7 +1,5 @@
 const elixir = require('laravel-elixir');
 
-require('laravel-elixir-webpack-react');
-
 /*
  |--------------------------------------------------------------------------
  | Elixir Asset Management

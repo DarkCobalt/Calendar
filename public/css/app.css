@@ -7688,4 +7688,12 @@ button.close {
   }
 }
 
+.calendar-header {
+  margin: 0 0 10px 0;
+}
+
+.calendar-header .today, .calendar-header .previus, .calendar-header .next {
+  margin: 0 10px;
+}
+
 /*# sourceMappingURL=app.css.map */

@@ -1,3 +1,7 @@
-require('./bootstrap');
+import React from 'react';
+import { render } from 'react-dom';
+import Calendar from './components/Calendar';
 
-import Example from './components/Example';
+if (document.getElementById('calendar')) {
+    render(<Calendar />, document.getElementById('calendar'));
+}
