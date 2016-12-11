@@ -37,4 +37,25 @@ class CalendarController extends Controller
 
         return view('home', compact('days','hours','prev','calendar'));
     }
+
+    public function getEditCalendar($id = null){
+        if($id){
+            $calendar = Calendar::find($id);
+        }else{
+            $calendar = null;
+        }
+        return view('modals.edit-calendar', compact('calendar'));
+    }
+    public function postEditCalendar(Request $request, $id = null){
+        $inputs = $request->all();
+        if($id){
+            $calendar = Calendar::find($id);
+            $calendar->update($inputs);
+        }else{
+            $inputs['user_id'] = Auth::user()->id;
+            Calendar::create($inputs);
+        }
+
+        return redirect()->back();
+    }
 }

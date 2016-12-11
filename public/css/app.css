@@ -7696,4 +7696,14 @@ button.close {
   margin: 0 10px;
 }
 
+.calendar-panel.calendar-blue table {
+  background: #2a88bd;
+  color: #FFF;
+}
+
+.calendar-panel.calendar-red table {
+  background: #ff6666;
+  color: #FFF;
+}
+
 /*# sourceMappingURL=app.css.map */

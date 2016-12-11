@@ -1,13 +1,4 @@
 @extends('layouts.app')
-@section('style')
-    <style>
-        @if($calendar)
-            .panel{
-                color: {{ $calendar->color  }}
-            }
-        @endif
-    </style>
-@endsection
 @section('content')
 <div class="container">
     <div class="row">
@@ -19,9 +10,9 @@
                             <a href="/calendar"><button type="button"  class="btn btn-default today">Today</button></a>
                             <a href="/calendar?date={{ $prev }}"><button type="button" class="btn btn-default previus">Previus</button></a>
                             <a href="/calendar?date={{ $days[6]}}"><button type="button"  class="btn btn-default next">Next</button></a>
-                            <button type="button" class="btn btn-default pull-right" data-toggle="modal" data-target="#myModal">Edit Calendar</button>
+                            <button type="button" class="btn btn-default pull-right" data-toggle="modal" data-target="/calendar/edit-calendar/{{ $calendar?$calendar->id:'' }}">Edit Calendar</button>
                         </div>
-                        <div class="panel">
+                        <div class="calendar-panel calendar-{{ $calendar?$calendar->color:'default' }}">
                             <h1 class="text-center">{{ $calendar?$calendar->title:'Calendar' }}</h1>
                             <table class="table table-bordered">
                                 <thead>

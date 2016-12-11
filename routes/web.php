@@ -18,3 +18,5 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/calendar', 'CalendarController@getIndex');
+Route::get('/calendar/edit-calendar/{id?}', 'CalendarController@getEditCalendar');
+Route::post('/calendar/edit-calendar/{id?}', 'CalendarController@postEditCalendar');
