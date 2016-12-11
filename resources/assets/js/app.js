@@ -10,5 +10,12 @@ $(document).ready(function(){
             $('#allmodals > div').modal('show');
         });
     });
-
+    $(document).on('click','#all_day',function(){
+        console.log('test');
+       if(!$(this).is(':checked')){
+           $('#normal_event').show();
+       }else{
+           $('#normal_event').hide();
+       }
+    });
 });

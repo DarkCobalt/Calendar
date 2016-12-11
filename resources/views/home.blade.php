@@ -27,13 +27,13 @@
                                     @foreach($hours as $hour)
                                         <tr>
                                             <th>{{ $hour }}</th>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
+                                            <td data-toggle="modal" data-target="/calendar/add-event?date={{ $days[0] }}&time={{ $hour }}"></td>
+                                            <td data-toggle="modal" data-target="/calendar/add-event?date={{ $days[0] }}&time={{ $hour }}"></td>
+                                            <td data-toggle="modal" data-target="/calendar/add-event?date={{ $days[0] }}&time={{ $hour }}"></td>
+                                            <td data-toggle="modal" data-target="/calendar/add-event?date={{ $days[0] }}&time={{ $hour }}"></td>
+                                            <td data-toggle="modal" data-target="/calendar/add-event?date={{ $days[0] }}&time={{ $hour }}"></td>
+                                            <td data-toggle="modal" data-target="/calendar/add-event?date={{ $days[0] }}&time={{ $hour }}"></td>
+                                            <td data-toggle="modal" data-target="/calendar/add-event?date={{ $days[0] }}&time={{ $hour }}"></td>
                                         </tr>
                                     @endforeach
                                 </tbody>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Calendar;
+use App\Models\CalendarEvent;
+use App\Models\Event;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -33,7 +35,7 @@ class CalendarController extends Controller
         $days = $this->sevenDays($date);
         $hours = $this->hours;
 
-        $calendar = Calendar::where('user_id',Auth::user()->id)->first();
+        $calendar = Calendar::where('user_id',Auth::user()->id)->with('events')->first();
 
         return view('home', compact('days','hours','prev','calendar'));
     }
@@ -55,7 +57,37 @@ class CalendarController extends Controller
             $inputs['user_id'] = Auth::user()->id;
             Calendar::create($inputs);
         }
+        return redirect()->back();
+    }
 
+    public function getAddEvent(Request $request){
+        $hours = $this->hours;
+        $date = $request->get('date');
+        $time = $request->get('time');
+        return view('modals.add-calendar', compact('hours','time','date'));
+    }
+    public function postAddEvent(Request $request){
+        $calendar = Calendar::where('user_id',Auth::user()->id)->first();
+        if($request->has('all_day') && $request->get('all_day') == 1){
+            $event = Event::create([
+                'title' => $request->get('title'),
+                'description' => $request->get('title'),
+                'all_day' =>  1,
+                'all_day_date' => Carbon::createFromFormat('d.m',$request->get('date'))
+            ]);
+        }else{
+            $event = Event::create([
+                'title' => $request->get('title'),
+                'description' => $request->get('title'),
+                'start_event' => Carbon::createFromFormat('d.m H:m',$request->get('date').' '.$request->get('start_time_event')),
+                'end_event' => Carbon::createFromFormat('d.m H:m',$request->get('date').' '.$request->get('end_time_event'))
+            ]);
+        }
+        CalendarEvent::create([
+            'user_id' => Auth::user()->id,
+            'calendar_id' => $calendar->id,
+            'event_id' => $event->id
+        ]);
         return redirect()->back();
     }
 }

@@ -10,4 +10,7 @@ class Calendar extends Model
         'user_id', 'title', 'color'
     ];
 
+    public function events(){
+        return $this->belongsToMany(Event::class, 'calendar_events','calendar_id', 'event_id');
+    }
 }

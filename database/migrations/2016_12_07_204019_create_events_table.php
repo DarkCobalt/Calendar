@@ -19,8 +19,8 @@ class CreateEventsTable extends Migration
             $table->text('description')->nullable();
             $table->dateTime('start_event')->nullable();
             $table->dateTime('end_event')->nullable();
-            $table->unsignedTinyInteger('all_day');
-            $table->date('all_day_date');
+            $table->unsignedTinyInteger('all_day')->nullable();
+            $table->date('all_day_date')->nullable();
             $table->timestamps();
         });
     }
